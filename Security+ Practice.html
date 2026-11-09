@@ -1,0 +1,639 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Security+ Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: an answer sheet. Left column lists the quiz sets as ruled rows with a bubble map of every question; right column holds focus sets. The quiz view is one narrow column of bubble-style options, like a paper exam. */
+:root{
+  --paper:#F1F3F6;
+  --card:#FFFFFF;
+  --ink:#12182B;
+  --mute:#566078;
+  --line:#D3D9E3;
+  --hl:#F2C200;
+  --hl-soft:#FFF0A3;
+  --good:#17784A;
+  --good-soft:#E1F3E9;
+  --bad:#B3321F;
+  --bad-soft:#FBE5E0;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Leelawadee UI","Thonburi","Noto Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1420;--card:#171E2E;--ink:#E8ECF4;--mute:#9BA6BC;--line:#2B3449;
+    --hl:#E3B800;--hl-soft:#3D3410;
+    --good:#6FD6A2;--good-soft:#12301F;--bad:#FF9183;--bad-soft:#3A1814;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1420;--card:#171E2E;--ink:#E8ECF4;--mute:#9BA6BC;--line:#2B3449;
+  --hl:#E3B800;--hl-soft:#3D3410;
+  --good:#6FD6A2;--good-soft:#12301F;--bad:#FF9183;--bad-soft:#3A1814;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 15px/1.55 var(--body);padding-inline:16px;padding-block:20px 56px}
+button,input{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1040px;margin-inline:auto}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 18px;border-radius:7px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:600;cursor:pointer}
+.btn:hover:not(:disabled){background:var(--hl);border-color:var(--ink);color:#12182B}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover:not(:disabled){background:var(--hl-soft);border-color:var(--ink);color:var(--ink)}
+.btn.wide{width:100%;justify-content:space-between}
+.link{background:none;border:0;padding:6px 2px;color:var(--mute);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.link:hover{color:var(--ink)}
+
+/* home */
+.top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;padding-bottom:20px}
+.top h1{font:700 clamp(30px,5vw,44px)/1.05 var(--display);letter-spacing:-.01em}
+mark.sw{background:linear-gradient(transparent 56%,var(--hl) 56%);color:inherit;padding-inline:2px}
+.top p{color:var(--mute);font:400 13px var(--mono)}
+.home{display:grid;gap:36px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:880px){.home{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:56px}}
+.set{padding-block:20px 24px;border-top:1.5px solid var(--ink);display:grid;gap:14px}
+.sethead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px}
+.sethead h2{font:700 24px/1.1 var(--display)}
+.meta{color:var(--mute);font:400 12.5px var(--mono)}
+.map{display:flex;flex-wrap:wrap;gap:2px}
+.dot{width:20px;height:20px;padding:0;border:0;background:none;display:grid;place-items:center;cursor:pointer;border-radius:50%}
+.dot i{display:block;width:11px;height:11px;border-radius:50%;border:1.5px solid var(--mute)}
+.dot.ok i{background:var(--good);border-color:var(--good)}
+.dot.bad i{background:var(--bad);border-color:var(--bad)}
+.dot:hover i{outline:2px solid var(--hl);outline-offset:1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--mute);font:400 12px var(--mono);margin-bottom:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--mute);display:inline-block}
+.legend .ok{background:var(--good);border-color:var(--good)}
+.legend .bad{background:var(--bad);border-color:var(--bad)}
+.focus{display:grid;gap:14px;align-content:start}
+.focus h2{font:700 24px/1.1 var(--display);padding-top:20px;border-top:1.5px solid var(--ink)}
+.focus h3{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:8px}
+.n{font-family:var(--mono);font-weight:500}
+.doms{display:grid;gap:4px}
+.dom{display:grid;gap:6px;text-align:left;width:100%;padding:10px 12px;border:1.5px solid transparent;border-radius:8px;background:none;cursor:pointer}
+.dom:hover{border-color:var(--ink);background:var(--hl-soft)}
+.dom .r{display:flex;justify-content:space-between;gap:12px}
+.dom .nm{font-weight:500;min-width:0}
+.dom .st{font:400 12px var(--mono);color:var(--mute);white-space:nowrap}
+.barline{display:block;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.barline i{display:block;height:100%;background:var(--ink);border-radius:3px}
+.prefs{display:grid;gap:8px;margin-top:8px}
+.prefs label{display:flex;gap:10px;align-items:center;cursor:pointer}
+.prefs input{width:18px;height:18px;accent-color:var(--ink)}
+.note{color:var(--mute);font-size:13px;max-width:62ch;margin-top:28px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:6px}
+
+/* quiz */
+.qwrap{max-width:760px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);display:flex;align-items:center;gap:14px;padding-block:8px}
+.settitle{font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.count{font:500 13px var(--mono)}
+.prog{height:5px;border-radius:3px;background:var(--line);overflow:hidden;margin-bottom:22px}
+.prog i{display:block;height:100%;background:var(--ink);transition:width .25s}
+.tags{display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:14px}
+.tag{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:4px;padding:3px 7px}
+.tag.hl{background:var(--hl-soft);border-color:var(--hl);color:var(--ink)}
+.qtext{font:500 clamp(18px,2.6vw,21px)/1.5 var(--body);max-width:68ch;text-wrap:pretty;white-space:pre-line;margin-bottom:22px;outline:none}
+.opts{display:grid;gap:10px}
+.opt{position:relative;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:14px;align-items:start;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer}
+.opt:hover{border-color:var(--ink)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+.bub{width:28px;height:28px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:500 12px var(--mono);margin-top:-1px}
+.multi .bub{border-radius:7px}
+.otxt{white-space:pre-line;min-width:0;overflow-wrap:anywhere;padding-top:2px}
+.otag{font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;padding-top:5px}
+.opt.sel{background:var(--hl-soft);border-color:var(--hl)}
+.opt.sel .bub{background:var(--ink);color:var(--paper)}
+.opt.done{cursor:default}
+.opt.done:hover{border-color:var(--line)}
+.opt.ok{background:var(--good-soft);border-color:var(--good)}
+.opt.ok .bub{background:var(--good);border-color:var(--good);color:var(--paper)}
+.opt.ok .otag{color:var(--good)}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad)}
+.opt.bad .bub{background:var(--bad);border-color:var(--bad);color:var(--paper)}
+.opt.bad .otag{color:var(--bad)}
+.opt.miss{border-style:dashed;border-color:var(--good);background:var(--card)}
+.opt.miss .bub{border-color:var(--good);color:var(--good)}
+.opt.miss .otag{color:var(--good)}
+.feedback{margin-top:18px;display:grid;gap:4px}
+.verdict{font:700 20px/1.2 var(--display)}
+.verdict.good{color:var(--good)}
+.verdict.bad{color:var(--bad)}
+.feedback .ans{max-width:68ch;white-space:pre-line}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px}
+.explain{margin-top:16px;padding:14px 16px;border-left:3px solid var(--hl);background:var(--card);border-radius:0 8px 8px 0;white-space:pre-wrap;max-width:68ch}
+.explain[hidden]{display:none}
+
+/* results */
+.res{max-width:760px;display:grid;gap:28px}
+.score{font:700 clamp(64px,14vw,112px)/1 var(--display);letter-spacing:-.02em}
+.score small{font:500 clamp(18px,3vw,24px) var(--mono);color:var(--mute);letter-spacing:0;margin-left:10px}
+.drow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding-block:8px}
+.drow .nm{font-weight:500}
+.drow .barline{grid-column:1/-1}
+.next{font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;background:var(--hl-soft);border:1px solid var(--hl);border-radius:4px;padding:2px 6px;margin-left:8px;white-space:nowrap}
+details.miss-i{border-top:1px solid var(--line);padding-block:10px}
+details.miss-i summary{cursor:pointer;font-weight:500;max-width:68ch}
+details.miss-i .body{display:grid;gap:6px;padding-top:10px;max-width:68ch;white-space:pre-line}
+.h3{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div class="wrap"><div id="app"></div></div>
+<script>
+const ACL=[
+"Access list outbound permit 0.0.0.0/0 0.0.0.0/0 port 53\nAccess list outbound deny 10.50.10.25/32 0.0.0.0/0 port 53",
+"Access list outbound permit 0.0.0.0/0 10.50.10.25/32 port 53\nAccess list outbound deny 0.0.0.0/0 0.0.0.0/0 port 53",
+"Access list outbound permit 0.0.0.0/0 0.0.0.0/0 port 53\nAccess list outbound deny 0.0.0.0/0 10.50.10.25/32 port 53",
+"Access list outbound permit 10.50.10.25/32 0.0.0.0/0 port 53\nAccess list outbound deny 0.0.0.0/0 0.0.0.0/0 port 53"
+];
+const ACL_Q="An enterprise is trying to limit outbound DNS traffic originating from its internal network. Outbound DNS requests will only be allowed from one device with the IP address 10.50.10.25. Which of the following firewall ACLs will accomplish this goal?";
+const ZT_Q="An analyst is evaluating the implementation of Zero Trust principles within the data plane. Which of the following would be most relevant for the analyst to evaluate?";
+const ZT_O=["Secured zones","Subject role","Adaptive identity","Threat scope reduction"];
+const HA_Q="Which of the following must be considered when designing a high-availability network? (Select TWO).";
+const HA_O=["Ease of recovery","Ability to patch","Physical isolation","Responsiveness","Attack surface","Extensible authentication"];
+
+// [id, domain, question, options, correct letters, screenshot flag]
+// domain: 1 General security concepts, 2 Threats/vulnerabilities/mitigations, 3 Security architecture, 4 Security operations, 5 Program management and oversight
+const BANK=[
+// ---------- Quiz 2 ----------
+["2-1",2,"Which of the following threat actors is the most likely to be hired by a foreign government to attack critical systems located in other countries?",["Hacktivist","Whistleblower","Organized crime","Unskilled attacker"],"C"],
+["2-2",1,"A company is planning to set up a SIEM system and assign an analyst to review the logs on a weekly basis. Which of the following types of controls is the company setting up?",["Corrective","Preventive","Detective","Deterrent"],"C"],
+["2-3",2,"After a security awareness training session, a user called the IT help desk and reported a suspicious call. The suspicious caller stated that the Chief Financial Officer wanted credit card information in order to close an invoice. Which of the following topics did the user recognize from the training?",["Insider threat","Email phishing","Social engineering","Executive whaling"],"C"],
+["2-4",4,"Which of the following exercises should an organization use to improve its incident response process?",["Tabletop","Replication","Failover","Recovery"],"A"],
+["2-5",1,"Which of the following is used to validate a certificate when it is presented to a user?",["OCSP","CSR","CA","CRC"],"A"],
+["2-6",2,"Which of the following vulnerabilities is exploited when an attacker overwrites a register with a malicious address?",["VM escape","SQL injection","Buffer overflow","Race condition"],"C"],
+["2-7",3,"Which of the following would be the best way to handle a critical business application that is running on a legacy server?",["Segmentation","Isolation","Hardening","Decommissioning"],"C"],
+["2-8",1,"Which of the following describes the process of concealing code or text inside a graphical image?",["Symmetric encryption","Hashing","Data masking","Steganography"],"D"],
+["2-9",4,"After a company was compromised, customers initiated a lawsuit. The company's attorneys have requested that the security team initiate a legal hold in response to the lawsuit. Which of the following describes the action the security team will most likely be required to take?",["Retain the emails between the security team and affected customers for 30 days.","Retain any communications related to the security breach until further notice.","Retain any communications between security members during the breach response.","Retain all emails from the company to affected customers for an indefinite period of time."],"B"],
+["2-10",1,"A network manager wants to protect the company's VPN by implementing multifactor authentication that uses something you know, something you have, and something you are. Which of the following would accomplish the manager's goal?",["Domain name, PKI, GeoIP lookup","VPN IP address, company ID, facial structure","Password, authentication token, thumbprint","Company URL, TLS certificate, home address"],"C"],
+["2-11",4,"A security manager created new documentation to use in response to various types of security incidents. Which of the following is the next step the manager should take?",["Set the maximum data retention policy.","Securely store the documents on an air-gapped network.","Review the documents' data classification policy.","Conduct a tabletop exercise with the team."],"D"],
+["2-12",3,"An organization is building a new backup data center with cost-benefit as the primary requirement and RTO and RPO values around two days. Which of the following types of sites is the best for this scenario?",["Real-time recovery","Hot","Cold","Warm"],"C"],
+["2-13",4,"Users at a company are reporting they are unable to access the URL for a new retail website because it is flagged as gambling and is being blocked. Which of the following changes would allow users to access the site?",["Creating a firewall rule to allow HTTPS traffic","Configuring the IPS to allow shopping","Tuning the DLP rule that detects credit card data","Updating the categorization in the content filter"],"D"],
+["2-14",2,"An administrator discovers that some files on a database server were recently encrypted. The administrator sees from the security logs that the data was last accessed by a domain user. Which of the following best describes the type of attack that occurred?",["Insider threat","Social engineering","Watering-hole","Unauthorized attacker"],"A"],
+["2-15",4,"Which of the following automation use cases would best enhance the security posture of an organization by rapidly updating permissions when employees leave a company?",["Provisioning resources","Disabling access","Reviewing change approvals","Escalating permission requests"],"B"],
+["2-16",3,HA_Q,HA_O,"AE"],
+["2-17",3,"Which of the following methods to secure credit card data is best to use when a requirement is to see only the last four numbers on a credit card?",["Encryption","Hashing","Masking","Tokenization"],"C"],
+["2-18",2,"An administrator finds that all user workstations and servers are displaying a message that is associated with files containing an extension of .ryk. Which of the following types of infections is present on the systems?",["Virus","Trojan","Spyware","Ransomware"],"D"],
+["2-19",3,"A healthcare organization wants to provide a web application that allows individuals to digitally report health emergencies. Which of the following is the most important consideration during development?",["Scalability","Availability","Cost","Ease of deployment"],"B"],
+["2-20",5,"An organization wants a third-party vendor to do a penetration test that targets a specific device. The organization has provided basic information about the device. Which of the following best describes this kind of penetration test?",["Partially known environment","Unknown environment","Integrated","Known environment"],"A"],
+["2-21",4,"A security administrator needs a method to secure data in an environment that includes some form of checks so that the administrator can track any changes. Which of the following should the administrator set up to achieve this goal?",["SPF","GPO","NAC","FIM"],"D"],
+["2-22",4,"Which of the following is the phase in the incident response process when a security analyst reviews roles and responsibilities?",["Preparation","Recovery","Lessons learned","Analysis"],"A"],
+["2-23",4,"A company requires hard drives to be securely wiped before sending decommissioned systems to recycling. Which of the following best describes this policy?",["Enumeration","Sanitization","Destruction","Inventory"],"B"],
+["2-24",4,"A company is discarding a classified storage array and hires an outside vendor to complete the disposal. Which of the following should the company request from the vendor?",["Certification","Inventory list","Classification","Proof of ownership"],"A"],
+["2-25",1,"Which of the following would be the best ways to ensure only authorized personnel can access a secure facility? (Select TWO).",["Fencing","Video surveillance","Badge access","Access control vestibule","Sign-in sheet","Sensor"],"CD"],
+["2-26",5,"A company's marketing department collects, modifies, and stores sensitive customer data. The infrastructure team is responsible for securing the data while in transit and at rest. Which of the following data roles describes the customer?",["Processor","Custodian","Subject","Owner"],"C"],
+["2-27",2,"Malware spread across a company's network after an employee visited a compromised industry blog. Which of the following best describes this type of attack?",["Impersonation","Disinformation","Watering-hole","Smishing"],"C"],
+["2-28",3,"A newly identified network access vulnerability has been found in the OS of legacy IoT devices. Which of the following would best mitigate this vulnerability quickly?",["Insurance","Patching","Segmentation","Replacement"],"C"],
+["2-29",3,"A bank insists all of its vendors must prevent data loss on stolen laptops. Which of the following strategies is the bank requiring?",["Encryption at rest","Masking","Data classification","Permission restrictions"],"A"],
+["2-30",3,"Which of the following would be best suited for constantly changing environments?",["RTOS","Containers","Embedded systems","SCADA"],"B"],
+["2-31",3,"A security analyst scans a company's public network and discovers a host is running a remote desktop that can be used to access the production network. Which of the following changes should the security analyst recommend?",["Changing the remote desktop port to a non-standard number","Setting up a VPN and placing the jump server inside the firewall","Using a proxy for web connections from the remote desktop server","Connecting the remote server to the domain and increasing the password length"],"B"],
+["2-32",3,"Security controls in a data center are being reviewed to ensure data is properly protected and that human life considerations are included. Which of the following best describes how the controls should be set up?",["Remote access points should fail closed.","Logging controls should fail open.","Safety controls should fail open.","Logical security controls should fail closed."],"C"],
+["2-33",2,"Which of the following is the most common data loss path for an air-gapped network?",["Bastion host","Unsecured Bluetooth","Unpatched OS","Removable devices"],"D"],
+["2-34",3,"A systems administrator works for a local hospital and needs to ensure patient data is protected and secure. Which of the following data classifications should be used to secure patient data?",["Private","Critical","Sensitive","Public"],"C"],
+["2-35",4,"Which of the following can best protect against an employee inadvertently installing malware on a company system?",["Host-based firewall","System isolation","Least privilege","Application allow list"],"D"],
+["2-36",3,"An organization is struggling with scaling issues on its VPN concentrator and internet circuit due to remote work. The organization is looking for a software solution that will allow it to reduce traffic on the VPN and internet circuit, while still providing encrypted tunnel access to the data center and monitoring of remote employee internet traffic. Which of the following will help achieve these objectives?",["Deploying a SASE solution to remote employees","Building a load-balanced VPN solution with redundant internet","Purchasing a low-cost SD-WAN solution for VPN traffic","Using a cloud provider to create additional VPN concentrators"],"A"],
+["2-37",2,"A company's end users are reporting that they are unable to reach external websites. After reviewing the performance data for the DNS servers, the analyst discovers that the CPU, disk, and memory usage are minimal, but the network interface is flooded with inbound traffic. Network logs show only a small number of DNS queries sent to this server. Which of the following best describes what the security analyst is seeing?",["Concurrent session usage","Secure DNS cryptographic downgrade","On-path resource consumption","Reflected denial of service"],"D"],
+["2-38",3,"A business received a small grant to migrate its infrastructure to an off-premises solution. Which of the following should be considered first?",["Security of cloud providers","Cost of implementation","Ability of engineers","Security of architecture"],"D"],
+["2-39",3,"A company is planning a disaster recovery site and needs to ensure that a single natural disaster would not result in the complete loss of regulated backup data. Which of the following should the company consider?",["Geographic dispersion","Platform diversity","Hot site","Load balancing"],"A"],
+["2-40",2,"A security analyst receives alerts about an internal system sending a large amount of unusual DNS queries to systems on the internet over short periods of time during non-business hours. Which of the following is most likely occurring?",["A worm is propagating across the network.","Data is being exfiltrated.","A logic bomb is deleting data.","Ransomware is encrypting files."],"B"],
+["2-41",4,"ร้านกาแฟในพื้นที่ให้บริการฮอตสปอต WiFi เล็ก ๆ ซึ่งใช้ WPA2-PSK กับลูกค้าของตน ร้านกาแฟต้องการก้าวทันตามแนวโน้มการรักษาความปลอดภัยอยู่เสมอ และต้องการใช้ WPA3 เพื่อให้ WiFi ปลอดภัยมากยิ่งขึ้น ร้านกาแฟน่าจะใช้เทคโนโลยีใดต่อไปนี้แทน PSK มากที่สุด",["WEP","MSCHAP","WPS","SAE"],"D"],
+["2-42",4,"บริษัทกำลังใช้ MFA กับแอปพลิเคชันทั้งหมดที่เก็บข้อมูลละเอียดอ่อน ผู้จัดการ IT ต้องการให้ MFA นั้นไม่ขัดจังหวะการทำงานและง่ายต่อการใช้งานสำหรับผู้ใช้ ผู้จัดการ IT ควรใช้เทคโนโลยีใดต่อไปนี้เมื่อใช้ MFA",["รหัสผ่านแบบใช้ครั้งเดียว","โทเค็นอีเมล","การแจ้งเตือนแบบพุช","การตรวจสอบสิทธิ์ฮาร์ดแวร์"],"C"],
+["2-43",4,"เมื่อไม่นานมานี้ผู้ประสงค์ร้ายเจาะเครือข่ายของบริษัทและทำการเคลื่อนย้ายตัวเอง (lateral movement) ไปยังศูนย์ข้อมูล เมื่อตรวจสอบ บริษัทพิสูจน์พยานหลักฐานต้องการรู้ว่าบนเซิร์ฟเวอร์ที่ถูกละเมิดเคยมีอะไรอยู่ในหน่วยความจำ ควรมอบไฟล์ใดต่อไปนี้ให้กับบริษัทพิสูจน์พยานหลักฐาน",["Security","Application","Dump","Syslog"],"C"],
+["2-44",1,"ข้อใดต่อไปนี้อธิบายแนวทางการปรับใช้แพทช์ของแอปพลิเคชันได้ดีที่สุด",["ใช้แพทช์กับระบบในสภาพแวดล้อมการทดสอบ จากนั้นจึงใช้กับระบบในสภาพแวดล้อมก่อนใช้งานจริง และสุดท้ายจึงใช้ในระบบการผลิต","ทดสอบแพทช์ในสภาพแวดล้อมก่อนใช้งานจริง พัฒนาจากแพทช์นั้นในสภาพแวดล้อมการพัฒนา จากนั้นจึงนำไปใช้กับระบบการผลิต","ทดสอบแพทช์ในสภาพแวดล้อมการทดสอบ ใช้กับระบบการผลิต จากนั้นจึงนำไปใช้กับสภาพแวดล้อมก่อนเอาขึ้นใช้งานจริง","ใช้แพทช์กับระบบการผลิต ใช้กับสภาพแวดล้อมก่อนใช้งานจริง จากนั้นจึงทดสอบทั้งหมดในสภาพแวดล้อมการทดสอบ"],"A"],
+["2-45",1,"องค์กรต้องการใช้ระดับที่สามในการตรวจสอบสิทธิ์ผู้ใช้แบบหลายระดับ องค์กรมีการใช้สมาร์ทการ์ดและรหัสผ่านอยู่แล้ว ข้อใดต่อไปนี้จะเป็นไปตามความต้องการระดับที่สามขององค์กร",["วันเกิด","ลายนิ้วมือ","PIN","TPM"],"B"],
+
+// ---------- Quiz 3 ----------
+["3-1",1,"Visitors to a secured facility are required to check in with a photo ID and enter the facility through an access control vestibule. Which of the following best describes this form of security control?",["Physical","Managerial","Technical","Operational"],"A"],
+["3-2",3,"A company must ensure sensitive data at rest is rendered unreadable. Which of the following will the company most likely use?",["Hashing","Tokenization","Encryption","Segmentation"],"C"],
+["3-3",3,"A security administrator is deploying a DLP solution to prevent the exfiltration of sensitive customer data. Which of the following should the administrator do first?",["Block access to cloud storage websites.","Create a rule to block outgoing email attachments.","Apply classifications to the data.","Remove all user permissions from shares on the file server."],"C"],
+["3-4",4,"Which of the following describes a security alerting and monitoring tool that collects system, application, and network logs from multiple sources in a centralized system?",["SIEM","DLP","IDS","SNMP"],"A"],
+["3-5",4,"Which of the following are cases in which an engineer should recommend the decommissioning of a network device? (Select TWO).",["The device has been moved from a production environment to a test environment.","The device is configured to use cleartext passwords.","The device is moved to an isolated segment on the enterprise network.","The device is moved to a different location in the enterprise.","The device's encryption level cannot meet organizational standards.","The device is unable to receive authorized updates."],"EF"],
+["3-6",5,"An administrator assists the legal and compliance team with ensuring information about customer transactions is archived for the proper time period. Which of the following data policies is the administrator carrying out?",["Compromise","Retention","Analysis","Transfer","Inventory"],"B"],
+["3-7",1,"A systems administrator is working on a solution with the following requirements:\n- Provide a secure zone.\n- Enforce a company-wide access control policy.\n- Reduce the scope of threats.\nWhich of the following is the systems administrator setting up?",["Zero Trust","AAA","Non-repudiation","CIA"],"A"],
+["3-8",5,"Which of the following describes the maximum allowance of accepted risk?",["Risk indicator","Risk level","Risk score","Risk threshold"],"D"],
+["3-9",4,"Which of the following incident response activities ensures evidence is properly handled?",["E-discovery","Chain of custody","Legal hold","Preservation"],"B"],
+["3-10",5,"Which of the following risk management strategies should an enterprise adopt first if a legacy application is critical to business operations and there are preventative controls that are not yet implemented?",["Mitigate","Accept","Transfer","Avoid"],"A"],
+["3-11",4,"Which of the following would be the best way to block unknown programs from executing?",["Access control list","Application allow list","Host-based firewall","DLP solution"],"B"],
+["3-12",5,"Which of the following teams combines both offensive and defensive testing techniques to protect an organization's critical systems?",["Red","Blue","Purple","Yellow"],"C"],
+["3-13",5,"A company is working with a vendor to perform a penetration test. Which of the following includes an estimate about the number of hours required to complete the engagement?",["SOW","BPA","SLA","NDA"],"A"],
+["3-14",4,"The local administrator account for a company's VPN appliance was unexpectedly used to log in to the remote management interface. Which of the following would have most likely prevented this from happening?",["Using least privilege","Changing the default password","Assigning individual user IDs","Reviewing logs more frequently"],"B"],
+["3-15",3,"Which of the following should a systems administrator use to ensure an easy deployment of resources within the cloud provider?",["Software as a service","Infrastructure as code","Internet of Things","Software-defined networking"],"B"],
+["3-16",3,"An enterprise has been experiencing attacks focused on exploiting vulnerabilities in older browser versions with well-known exploits. Which of the following security solutions should be configured to best provide the ability to monitor and block these known signature-based attacks?",["ACL","DLP","IDS","IPS"],"D"],
+["3-17",4,"During the onboarding process, an employee needs to create a password for an intranet account. The password must include ten characters, numbers, and letters, and two special characters. Once the password is created, the company will grant the employee access to other company-owned websites based on the intranet profile. Which of the following access management concepts is the company most likely using to safeguard intranet accounts and grant access to multiple sites based on a user's intranet account? (Select TWO).",["Federation","Identity proofing","Password complexity","Default password changes","Password manager","Open authentication"],"AC"],
+["3-18",1,"A company currently uses passwords for logging in to company-owned devices and wants to add a second authentication factor. Per corporate policy, users are not allowed to have smartphones at their desks. Which of the following would meet these requirements?",["Smart card","PIN code","Knowledge-based question","Secret key"],"A"],
+["3-19",2,"A security analyst receives a SIEM alert that someone logged in to the app admin test account, which is only used for the early detection of attacks. The security analyst then reviews the application log (shown as a screenshot on your Notion page). Which of the following can the security analyst conclude?",["A replay attack is being conducted against the application.","An injection attack is being conducted against a user authentication system.","A service account password may have been changed, resulting in continuous failed logins within the application.","A credentialed vulnerability scanner attack is testing several CVEs against the application."],"A",1],
+["3-20",4,"An organization is having difficulty correlating events from its individual AV, EDR, DLP, SWG, WAF, MDM, HIPS, and CASB systems. Which of the following is the best way to improve the situation?",["Remove expensive systems that generate few alerts.","Modify the systems to alert only on critical issues.","Utilize a SIEM to centralize logs and dashboards.","Implement a new syslog/NetFlow appliance."],"C"],
+["3-21",2,"An attacker posing as the Chief Executive Officer calls an employee and instructs the employee to buy gift cards. Which of the following techniques is the attacker using?",["Smishing","Disinformation","Impersonating","Whaling"],"D"],
+["3-22",5,"A company hired a consultant to perform an offensive security assessment covering penetration testing and social engineering. Which of the following teams will conduct this assessment activity?",["White","Purple","Blue","Red"],"D"],
+["3-23",1,ZT_Q,ZT_O,"B"],
+["3-24",3,"An organization is leveraging a VPN between its headquarters and a branch location. Which of the following is the VPN protecting?",["Data in use","Data in transit","Geographic restrictions","Data sovereignty"],"B"],
+["3-25",2,"The marketing department set up its own project management software without telling the appropriate departments. Which of the following describes this scenario?",["Shadow IT","Insider threat","Data exfiltration","Service disruption"],"A"],
+["3-26",4,ACL_Q,ACL,"D"],
+["3-27",3,"An engineer is setting up a VDI environment for a factory location, and the business wants to deploy a low-cost solution to enable users on the shop floor to log in to the VDI environment directly. Which of the following should the engineer select to meet these requirements?",["Laptops","Containers","Thin clients","Workstations"],"C"],
+["3-28",1,"Which of the following is an administrative control that would be most effective to reduce the occurrence of malware execution?",["Security awareness training","Frequency of NIDS updates","Change control procedures","EDR reporting cycle"],"A"],
+["3-29",5,"A client demands at least 99.99% uptime from a service provider's hosted security services. Which of the following documents includes the information the service provider should return to the client?",["MOA","SOW","MOU","SLA"],"D"],
+["3-30",2,"A company is adding a clause to its AUP that states employees are not allowed to modify the operating system on mobile devices. Which of the following vulnerabilities is the organization addressing?",["Cross-site scripting","Buffer overflow","Jailbreaking","Side loading"],"C"],
+["3-31",4,"Which of the following practices would be best to prevent an insider from introducing malicious code into a company's development process?",["Code scanning for vulnerabilities","Open-source component usage","Quality assurance testing","Peer review and approval"],"D"],
+["3-32",4,"A systems administrator is creating a script that would save time and prevent human error when performing account creation for a large number of end users. Which of the following would be a good use case for this task?",["Off-the-shelf software","Orchestration","Baseline","Policy enforcement"],"B"],
+["3-33",3,"A systems administrator is looking for a low-cost application-hosting solution that is cloud-based. Which of the following meets these requirements?",["Serverless framework","Type 1 hypervisor","SD-WAN","SDN"],"A"],
+["3-34",4,"After an audit, an administrator discovers all users have access to confidential data on a file server. Which of the following should the administrator use to restrict access to the data quickly?",["Group Policy","Content filtering","Data loss prevention","Access control lists"],"D"],
+["3-35",2,"A Chief Information Security Officer (CISO) wants to explicitly raise awareness about the increase of ransomware-as-a-service in a report to the management team. Which of the following best describes the threat actor in the CISO's report?",["Insider threat","Hacktivist","Nation-state","Organized crime"],"D"],
+["3-36",3,"A small business uses kiosks on the sales floor to display product information for customers. A security team discovers the kiosks use end-of-life operating systems. Which of the following is the security team most likely to document as a security implication of the current architecture?",["Patch availability","Product software compatibility","Ease of recovery","Cost of replacement"],"A"],
+["3-37",2,"After a security incident, a systems administrator asks the company to buy a NAC platform. Which of the following attack surfaces is the systems administrator trying to protect?",["Bluetooth","Wired","NFC","SCADA"],"B"],
+["3-38",5,"Which of the following factors are the most important to address when formulating a training curriculum plan for a security awareness program? (Select TWO).",["Channels by which the organization communicates with customers","The reporting mechanisms for ethics violations","Threat vectors based on the industry in which the organization operates","Secure software development training for all personnel","Cadence and duration of training events","Retraining requirements for individuals who fail phishing simulations"],"CE"],
+["3-39",1,"An organization disabled unneeded services and placed a firewall in front of a business-critical legacy system. Which of the following best describes the actions taken by the organization?",["Exception","Segmentation","Risk transfer","Compensating controls"],"D"],
+["3-40",5,"Which of the following is the best reason to complete an audit in a banking environment?",["Regulatory requirement","Organizational change","Self-assessment requirement","Service-level requirement"],"A"],
+["3-41",5,"Which of the following would be most useful in determining whether the long-term cost to transfer a risk is less than the impact of the risk?",["ARO","RTO","RPO","ALE","SLE"],"D"],
+["3-42",2,"A security analyst is investigating an application server and discovers that software on the server is behaving abnormally. The software normally runs batch jobs locally and does not generate traffic, but the process is now generating outbound traffic over random high ports. Which of the following vulnerabilities has likely been exploited in this software?",["Memory injection","Race condition","Side loading","SQL injection"],"A"],
+["3-43",1,"A company wants to verify that the software the company is deploying came from the vendor the company purchased the software from. Which of the following is the best way for the company to confirm this information?",["Validate the code signature.","Execute the code in a sandbox.","Search the executable for ASCII strings.","Generate a hash of the files."],"A"],
+["3-44",4,"A security operations center determines that the malicious activity detected on a server is normal. Which of the following activities describes the act of ignoring detected activity in the future?",["Tuning","Aggregating","Quarantining","Archiving"],"A"],
+["3-45",1,"In order to strengthen a password and prevent a hacker from cracking it, a random string of 36 characters was added to the password. Which of the following best describes this technique?",["Key stretching","Tokenization","Data masking","Salting"],"D"],
+
+// ---------- Quiz 4 ----------
+["4-1",2,"A security analyst reviews domain activity logs and notices the activity shown in the screenshot on your Notion page. Which of the following is the best explanation for what the security analyst has discovered?",["The user jsmith's account has been locked out.","A keylogger is installed on jsmith's workstation","An attacker is attempting to brute force jsmith's account.","Ransomware has been deployed in the domain."],"B",1],
+["4-2",1,"Which of the following is used to add extra complexity before using a one-way data transformation algorithm?",["Key stretching","Data masking","Steganography","Salting"],"D"],
+["4-3",3,"A company is concerned about weather events causing damage to the server room and downtime. Which of the following should the company consider?",["Clustering servers","Geographic dispersion","Load balancers","Off-site backups"],"B"],
+["4-4",2,"Which of the following is a primary security concern for a company setting up a BYOD program?",["End of life","Buffer overflow","VM escape","Jailbreaking"],"D"],
+["4-5",2,"An employee clicked a link in an email from a payment website that asked the employee to update contact information. The employee entered the log-in information but received a \"page not found\" error message. Which of the following types of social engineering attacks occurred?",["Brand impersonation","Pretexting","Typosquatting","Phishing"],"D"],
+["4-6",4,ACL_Q,ACL,"D"],
+["4-7",4,"A data administrator is configuring authentication for a SaaS application and would like to reduce the number of credentials employees need to maintain. The company prefers to use domain credentials to access new SaaS applications. Which of the following methods would allow this functionality?",["SSO","LEAP","MFA","PEAP"],"A"],
+["4-8",2,"Which of the following scenarios describes a possible business email compromise attack?",["An employee receives a gift card request in an email that has an executive's name in the display field of the email.","Employees who open an email attachment receive messages demanding payment in order to access files.","A service desk employee receives an email from the HR director asking for log-in credentials to a cloud administrator account.","An employee receives an email with a link to a phishing site that is designed to look like the company's email portal."],"A"],
+["4-9",3,"A company prevented direct access from the database administrators' workstations to the network segment that contains database servers. Which of the following should a database administrator use to access the database servers?",["Jump server","RADIUS","HSM","Load balancer"],"A"],
+["4-10",3,"An organization's internet-facing website was compromised when an attacker exploited a buffer overflow. Which of the following should the organization deploy to best protect against similar attacks in the future?",["NGFW","WAF","TLS","SD-WAN"],"B"],
+["4-11",4,"An administrator notices that several users are logging in from suspicious IP addresses. After speaking with the users, the administrator determines that the employees were not logging in from those IP addresses and resets the affected users' passwords. Which of the following should the administrator implement to prevent this type of attack from succeeding in the future?",["Multifactor authentication","Permissions assignment","Access management","Password complexity"],"A"],
+["4-12",2,"An employee receives a text message that appears to have been sent by the payroll department and is asking for credential verification. Which of the following social engineering techniques are being attempted? (Select TWO).",["Typosquatting","Phishing","Impersonation","Vishing","Smishing","Misinformation"],"BE"],
+["4-13",1,"Which of the following has been implemented when a host-based firewall on a legacy Linux system allows connections from only specific internal IP addresses?",["Compensating control","Network segmentation","Transfer of risk","SNMP traps"],"A"],
+["4-14",5,"Several employees received a fraudulent text message from someone claiming to be the Chief Executive Officer (CEO). The message stated: \"I'm in an airport right now with no access to email. I need you to buy gift cards for employee recognition awards. Please send the gift cards to following email address.\" Which of the following are the best responses to this situation? (Select TWO).",["Cancel current employee recognition gift cards.","Add a smishing exercise to the annual company training.","Issue a general email warning to the company.","Have the CEO change phone numbers.","Conduct a forensic investigation on the CEO's phone.","Implement mobile device management."],"BC"],
+["4-15",5,"A company is required to use certified hardware when building networks. Which of the following best addresses the risks associated with procuring counterfeit hardware?",["A thorough analysis of the supply chain","A legally enforceable corporate acquisition policy","A right to audit clause in vendor contracts and SOWs","An in-depth penetration test of all suppliers and vendors"],"A"],
+["4-16",5,"Which of the following provides the details about the terms of a test with a third-party penetration tester?",["Rules of engagement","Supply chain analysis","Right to audit clause","Due diligence"],"A"],
+["4-17",5,"A penetration tester begins an engagement by performing port and service scans against the client environment according to the rules of engagement. Which of the following reconnaissance types is the tester performing?",["Active","Passive","Defensive","Offensive"],"A"],
+["4-18",4,"Which of the following is required for an organization to properly manage its restore process in the event of system failure?",["IRP","DRP","RPO","SDLC"],"B"],
+["4-19",2,"Which of the following vulnerabilities is associated with installing software outside of a manufacturer's approved software repository?",["Jailbreaking","Memory injection","Resource reuse","Side loading"],"D"],
+["4-20",2,"A security analyst is reviewing the logs shown in the screenshot on your Notion page. Which of the following attacks is most likely occurring?",["Password spraying","Account forgery","Pass-the-hash","Brute-force"],"A",1],
+["4-21",1,ZT_Q,ZT_O,"B"],
+["4-22",3,"An engineer needs to find a solution that creates an added layer of security by preventing unauthorized access to internal company resources. Which of the following would be the best solution?",["RDP server","Jump server","Proxy server","Hypervisor"],"B"],
+["4-23",4,"A company's web filter is configured to scan the URL for strings and deny access when matches are found. Which of the following search strings should an analyst employ to prohibit access to non-encrypted websites?",["encryption=off","http://","www.*.com",":443"],"B"],
+["4-24",4,"The management team notices that new accounts that are set up manually do not always have correct access or permissions. Which of the following automation techniques should a systems administrator use to streamline account creation?",["Guard rail script","Ticketing workflow","Escalation script","User provisioning script"],"D"],
+["4-25",4,"During a security incident, the security operations team identified sustained network traffic from a malicious IP address: 10.1.4.9. A security analyst is creating an inbound firewall rule to block the IP address from accessing the organization's network. Which of the following fulfills this request?",["access-list inbound deny ig source 0.0.0.0/0 destination 10.1.4.9/32","access-list inbound deny ig source 10.1.4.9/32 destination 0.0.0.0/0","access-list inbound permit ig source 10.1.4.9/32 destination 0.0.0.0/0","access-list inbound permit ig source 0.0.0.0/0 destination 10.1.4.9/32"],"B"],
+["4-26",3,"A company needs to provide administrative access to internal resources while minimizing the traffic allowed through the security boundary. Which of the following methods is most secure?",["Implementing a bastion host","Deploying a perimeter network","Installing a WAF","Utilizing single sign-on"],"A"],
+["4-27",2,"An administrator is reviewing a single server's security logs and discovers the entries shown in the screenshot on your Notion page. Which of the following best describes the action captured in this log file?",["Brute-force attack","Privilege escalation","Failed password audit","Forgotten password by the user"],"A",1],
+["4-28",3,"A security engineer is implementing FDE for all laptops in an organization. Which of the following are the most important for the engineer to consider as part of the planning process? (Select TWO).",["Key escrow","TPM presence","Digital signatures","Data tokenization","Public key management","Certificate authority linking"],"AB"],
+["4-29",3,"A hacker gained access to a system via a phishing attempt that was a direct result of a user clicking a suspicious link. The link laterally deployed ransomware, which laid dormant for multiple weeks, across the network. Which of the following would have mitigated the spread?",["IPS","IDS","WAF","UAT"],"A"],
+["4-30",4,"A user is attempting to patch a critical system, but the patch fails to transfer. Which of the following access controls is most likely inhibiting the transfer?",["Attribute-based","Time of day","Role-based","Least privilege"],"D"],
+["4-31",4,"A systems administrator wants to prevent users from being able to access data based on their responsibilities. The administrator also wants to apply the required access structure via a simplified format. Which of the following should the administrator apply to the site recovery resource group?",["RBAC","ACL","SAML","GPO"],"A"],
+["4-32",2,"One of a company's vendors sent an analyst a security bulletin that recommends a BIOS update. Which of the following vulnerability types is being addressed by the patch?",["Virtualization","Firmware","Application","Operating system"],"B"],
+["4-33",4,"A security analyst locates a potentially malicious video file on a server and needs to identify both the creation date and the file's creator. Which of the following actions would most likely give the security analyst the information required?",["Obtain the file's SHA-256 hash.","Use hexdump on the file's contents.","Check endpoint logs.","Query the file's metadata."],"D"],
+["4-34",4,"After a recent vulnerability scan, a security engineer needs to harden the routers within the corporate network. Which of the following is the most appropriate to disable?",["Console access","Routing protocols","VLANs","Web-based administration"],"D"],
+["4-35",2,"Which of the following involves an attempt to take advantage of database misconfigurations?",["Buffer overflow","SQL injection","VM escape","Memory injection"],"B"],
+["4-36",4,"Which of the following is used to protect a computer from viruses, malware, and Trojans being installed and moving laterally across the network?",["IDS","ACL","EDR","NAC"],"C"],
+["4-37",3,"A systems administrator set up a perimeter firewall but continues to notice suspicious connections between internal endpoints. Which of the following should be set up in order to mitigate the threat posed by the suspicious activity?",["Host-based firewall","Web application firewall","Access control list","Application allow list"],"A"],
+["4-38",4,"A security analyst is reviewing alerts in the SIEM related to potential malicious network traffic coming from an employee's corporate laptop. The security analyst has determined that additional data about the executable running on the machine is necessary to continue the investigation. Which of the following logs should the analyst use as a data source?",["Application","IPS/IDS","Network","Endpoint"],"D"],
+["4-39",4,"A cyber operations team informs a security analyst about a new tactic malicious actors are using to compromise networks. SIEM alerts have not yet been configured. Which of the following best describes what the security analyst should do to identify this behavior?",["Digital forensics","E-discovery","Incident response","Threat hunting"],"D"],
+["4-40",5,"A company purchased cyber insurance to address items listed on the risk register. Which of the following strategies does this represent?",["Accept","Transfer","Mitigate","Avoid"],"B"],
+["4-41",3,"A security administrator would like to protect data on employees' laptops. Which of the following encryption techniques should the security administrator use?",["Partition","Asymmetric","Full disk","Database"],"C"],
+["4-42",1,"Which of the following security control types does an acceptable use policy best represent?",["Detective","Compensating","Corrective","Preventive"],"D"],
+["4-43",4,"An IT manager informs the entire help desk staff that only the IT manager and the help desk lead will have access to the administrator console of the help desk software. Which of the following security techniques is the IT manager setting up?",["Hardening","Employee monitoring","Configuration enforcement","Least privilege"],"D"],
+["4-44",5,"Which of the following is the most likely to be used to document risks, responsible parties, and thresholds?",["Risk tolerance","Risk transfer","Risk register","Risk analysis"],"C"],
+
+// ---------- Quiz 5 ----------
+["5-1",1,"Which of the following should a security administrator adhere to when setting up a new set of firewall rules?",["Disaster recovery plan","Incident response procedure","Business continuity plan","Change management procedure"],"D"],
+["5-2",3,"An organization would like to store customer data on a separate part of the network that is not accessible to users on the main corporate network. Which of the following should the administrator use to accomplish this goal?",["Segmentation","Isolation","Patching","Encryption"],"A"],
+["5-3",5,"A company is expanding its threat surface program and allowing individuals to security test the company's internet-facing application. The company will compensate researchers based on the vulnerabilities discovered. Which of the following best describes the program the company is setting up?",["Open-source intelligence","Bug bounty","Red team","Penetration testing"],"B"],
+["5-4",2,"Which of the following threat actors is the most likely to use large financial resources to attack critical systems located in other countries?",["Insider","Unskilled attacker","Nation-state","Hacktivist"],"C"],
+["5-5",2,"Which of the following enables the use of an input field to run commands that can view or manipulate data?",["Cross-site scripting","Side loading","Buffer overflow","SQL injection"],"D"],
+["5-6",3,"Employees in the research and development business unit receive extensive training to ensure they understand how to best protect company data. Which of the following is the type of data these employees are most likely to use in day-to-day work activities?",["Encrypted","Intellectual property","Critical","Data in transit"],"B"],
+["5-7",4,"A company has begun labeling all laptops with asset inventory stickers and associating them with employee IDs. Which of the following security benefits do these actions provide? (Select TWO).",["If a security incident occurs on the device, the correct employee can be notified.","The security team will be able to send user awareness training to the appropriate device.","Users can be mapped to their devices when configuring software MFA tokens.","User-based firewall policies can be correctly targeted to the appropriate laptops.","When conducting penetration testing, the security team will be able to target the desired laptops.","Company data can be accounted for when the employee leaves the organization."],"AF"],
+["5-8",5,"A technician wants to improve the situational and environmental awareness of existing users as they transition from remote to in-office work. Which of the following is the best option?",["Send out periodic security reminders.","Update the content of new hire documentation.","Modify the content of recurring training.","Implement a phishing campaign"],"C"],
+["5-9",4,"A newly appointed board member with cybersecurity knowledge wants the board of directors to receive a quarterly report detailing the number of incidents that impacted the organization. The systems administrator is creating a way to present the data to the board of directors. Which of the following should the systems administrator use?",["Packet captures","Vulnerability scans","Metadata","Dashboard"],"D"],
+["5-10",2,"A systems administrator receives the following alert from a file integrity monitoring tool: The hash of the cmd.exe file has changed. The systems administrator checks the OS logs and notices that no patches were applied in the last two months. Which of the following most likely occurred?",["The end user changed the file permissions.","A cryptographic collision was detected.","A snapshot of the file system was taken.","A rootkit was deployed."],"D"],
+["5-11",3,"Which of the following roles, according to the shared responsibility model, is responsible for securing the company's database in an IaaS model for a cloud environment?",["Client","Third-party vendor","Cloud provider","DBA"],"A"],
+["5-12",5,"A client asked a security company to provide a document outlining the project, the cost, and the completion time frame. Which of the following documents should the company provide to the client?",["MSA","SLA","BPA","SOW"],"D"],
+["5-13",4,"Which of the following is used to quantitatively measure the criticality of a vulnerability?",["CVE","CVSS","CIA","CERT"],"B"],
+["5-14",4,"A security team is reviewing the findings in a report that was delivered after a third party performed a penetration test. One of the findings indicated that a web application form field is vulnerable to cross-site scripting. Which of the following application security techniques should the security analyst recommend the developer implement to prevent this vulnerability?",["Secure cookies","Version control","Input validation","Code signing"],"C"],
+["5-15",3,HA_Q,HA_O,"AE"],
+["5-16",1,"A technician needs to apply a high-priority patch to a production system. Which of the following steps should be taken first?",["Air gap the system.","Move the system to a different network segment.","Create a change control request.","Apply the patch to the system."],"C"],
+["5-17",4,"Which of the following describes the reason root cause analysis should be conducted as part of incident response?",["To gather IoCs for the investigation","To discover which systems have been affected","To eradicate any trace of malware on the network","To prevent future incidents of the same nature"],"D"],
+["5-18",5,"Which of the following is the most likely outcome if a large bank fails an internal PCI DSS compliance assessment?",["Fines","Audit findings","Sanctions","Reputation damage"],"A"],
+["5-19",3,"A company is developing a business continuity strategy and needs to determine how many staff members would be required to sustain the business in the case of a disruption. Which of the following best describes this step?",["Capacity planning","Redundancy","Geographic dispersion","Tabletop exercise"],"A"],
+["5-20",4,"A company's legal department drafted sensitive documents in a SaaS application and wants to ensure the documents cannot be accessed by individuals in high-risk countries. Which of the following is the most effective way to limit this access?",["Data masking","Encryption","Geolocation policy","Data sovereignty regulation"],"C"],
+["5-21",2,"Which of the following is a hardware-specific vulnerability?",["Firmware version","Buffer overflow","SQL injection","Cross-site scripting"],"A"],
+["5-22",1,"While troubleshooting a firewall configuration, a technician determines that a \"deny any\" policy should be added to the bottom of the ACL. The technician updates the policy, but the new policy causes several company servers to become unreachable. Which of the following actions would prevent this issue?",["Documenting the new policy in a change request and submitting the request to change management","Testing the policy in a non-production environment before enabling the policy in the production network","Disabling any intrusion prevention signatures on the \"deny any\" policy prior to enabling the new policy","Including an \"allow any\" policy above the \"deny any\" policy"],"B"],
+["5-23",1,"A software development manager wants to ensure the authenticity of the code created by the company. Which of the following options is the most appropriate?",["Testing input validation on the user input fields","Performing code signing on company-developed software","Performing static code analysis on the software","Ensuring secure cookies are used"],"B"],
+["5-24",2,"A technician is opening ports on a firewall for a new system being deployed and supported by a SaaS provider. Which of the following is a risk in the new system?",["Default credentials","Non-segmented network","Supply chain vendor","Vulnerable software"],"C"],
+["5-25",1,"Which of the following can be used to identify potential attacker activities without affecting production servers?",["Honey pot","Video surveillance","Zero Trust","Geofencing"],"A"],
+["5-26",4,"During an investigation, an incident response team attempts to understand the source of an incident. Which of the following incident response activities describes this process?",["Analysis","Lessons learned","Detection","Containment"],"A"],
+["5-27",4,"A security practitioner completes a vulnerability assessment on a company's network and finds several vulnerabilities, which the operations team remediates. Which of the following should be done next?",["Conduct an audit.","Initiate a penetration test.","Rescan the network.","Submit a report."],"C"],
+["5-28",2,"An administrator was notified that a user logged in remotely after hours and copied large amounts of data to a personal device. Which of the following best describes the user's activity?",["Penetration testing","Phishing campaign","External audit","Insider threat"],"D"],
+["5-29",1,"Which of the following allows for the attribution of messages to individuals?",["Adaptive identity","Non-repudiation","Authentication","Access logs"],"B"],
+["5-30",4,"Which of the following is the best way to consistently determine on a daily basis whether security settings on servers have been modified?",["Automation","Compliance checklist","Attestation","Manual audit"],"A"],
+["5-31",3,"Which of the following tools can assist with detecting an employee who has accidentally emailed a file containing a customer's PII?",["SCAP","NetFlow","Antivirus","DLP"],"D"],
+["5-32",4,"An organization recently updated its security policy to include the following statement: Regular expressions are included in source code to remove special characters such as $, |, ;, &, `, and ? from variables set by forms in a web application. Which of the following best explains the security technique the organization adopted by making this addition to the policy?",["Identify embedded keys","Code debugging","Input validation","Static code analysis"],"C"],
+["5-33",4,"A security analyst and the management team are reviewing the organizational performance of a recent phishing campaign. The user click-through rate exceeded the acceptable risk threshold, and the management team wants to reduce the impact when a user clicks on a link in a phishing message. Which of the following should the analyst do?",["Place posters around the office to raise awareness of common phishing activities.","Implement email security filters to prevent phishing emails from being delivered","Update the EDR policies to block automatic execution of downloaded programs.","Create additional training for users to recognize the signs of phishing attempts."],"C"],
+["5-34",5,"A company decided to reduce the cost of its annual cyber insurance policy by removing the coverage for ransomware attacks. Which of the following analysis elements did the company most likely use in making this decision?",["IMTTR","RTO","ARO","MTBF"],"C"],
+["5-35",1,"Which of the following security concepts is the best reason for permissions on a human resources fileshare to follow the principle of least privilege?",["Integrity","Availability","Confidentiality","Non-repudiation"],"C"],
+["5-36",5,"Which of the following is the most likely to be included as an element of communication in a security awareness program?",["Reporting phishing attempts or other suspicious activities","Detecting insider threats using anomalous behavior recognition","Verifying information when modifying wire transfer data","Performing social engineering as part of third-party penetration testing"],"A"],
+["5-37",1,"After a recent ransomware attack on a company's system, an administrator reviewed the log files. Which of the following control types did the administrator use?",["Compensating","Detective","Preventive","Corrective"],"B"],
+["5-38",5,"Which of the following agreement types defines the time frame in which a vendor needs to respond?",["SOW","SLA","MOA","MOU"],"B"],
+["5-39",4,"A Chief Information Security Officer wants to monitor the company's servers for SQLi attacks and allow for comprehensive investigations if an attack occurs. The company uses SSL decryption to allow traffic monitoring. Which of the following strategies would best accomplish this goal?",["Logging all NetFlow traffic into a SIEM","Deploying network traffic sensors on the same subnet as the servers","Logging endpoint and OS-specific security logs","Enabling full packet capture for traffic entering and exiting the servers"],"D"],
+["5-40",3,"A company is developing a critical system for the government and storing project information on a fileshare. Which of the following describes how this data will most likely be classified? (Select TWO).",["Private","Confidential","Public","Operational","Urgent","Restricted"],"BF"],
+["5-41",4,"After reviewing the following vulnerability scanning report:\nServer: 192.168.14.6\nService: Telnet\nPort: 23\nProtocol: TCP\nStatus: Open\nSeverity: High\nVulnerability: Use of an insecure network protocol\n\nA security analyst performs the following test:\nnmap -p 23 192.168.14.6 --script telnet-encryption\nPORT STATE SERVICE REASON\n23/tcp open telnet syn-ack\n| telnet-encryption:\n|_ Telnet server supports encryption\n\nWhich of the following would the security analyst conclude for this reported vulnerability?",["It is a false positive","A rescan is required.","It is considered noise.","Compensating controls exist."],"A"],
+["5-42",3,"A security consultant needs secure, remote access to a client environment. Which of the following should the security consultant most likely use to gain access?",["EAP","DHCP","IPSec","NAT"],"C"],
+["5-43",1,"Which of the following best practices gives administrators a set period to perform changes to an operational system to ensure availability and minimize business impacts?",["Impact analysis","Scheduled downtime","Backout plan","Change management boards"],"B"],
+["5-44",4,"Which of the following actions could a security engineer take to ensure workstations and servers are properly monitored for unauthorized changes and software?",["Configure all systems to log scheduled tasks.","Collect and monitor all traffic exiting the network.","Block traffic based on known malicious signatures.","Install endpoint management software on all systems."],"D"]
+];
+(function(){
+"use strict";
+var $app=document.getElementById("app");
+var L="ABCDEF";
+var DOMS={1:"General security concepts",2:"Threats, vulnerabilities, mitigations",3:"Security architecture",4:"Security operations",5:"Program management and oversight"};
+var SETS=[2,3,4,5];
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function pct(a,b){return b?Math.round(100*a/b):0}
+
+var QS=BANK.map(function(b){
+  var p=b[0].split("-");
+  return {id:b[0],set:+p[0],no:+p[1],dom:b[1],text:b[2],opts:b[3],ans:b[4].split("").map(function(c){return L.indexOf(c)}),n:b[4].length,img:!!b[5]};
+});
+
+/* progress lives in this browser only */
+var KEY="secplus-practice-v1";
+var store={q:{},prefs:{sa:false,sq:false}};
+try{
+  var raw=localStorage.getItem(KEY);
+  if(raw){var p=JSON.parse(raw);if(p&&p.q)store.q=p.q;if(p&&p.prefs){store.prefs.sa=!!p.prefs.sa;store.prefs.sq=!!p.prefs.sq}}
+}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+function record(id,ok){var r=store.q[id]||{a:0,c:0,l:0};r.a++;if(ok)r.c++;r.l=ok?1:0;store.q[id]=r;save()}
+function stat(list){var seen=0,ok=0;list.forEach(function(q){var r=store.q[q.id];if(r){seen++;if(r.l===1)ok++}});return {seen:seen,ok:ok,total:list.length}}
+
+/* optional: ask Claude to explain a question */
+var sampleFn=null;
+var cache={};
+(function(){
+  try{
+    if(window.claude&&window.claude.use){
+      Promise.resolve(window.claude.use("sample")).then(function(s){sampleFn=s||null;syncExplain()},function(){sampleFn=null});
+    }
+  }catch(e){sampleFn=null}
+})();
+function syncExplain(){var b=$app.querySelector('[data-act="explain"]');if(b)b.hidden=!sampleFn}
+
+var view="home",sess=null;
+
+/* ---------- home ---------- */
+function renderHome(){
+  view="home";sess=null;
+  var missed=QS.filter(function(q){return store.q[q.id]&&store.q[q.id].l===0});
+  var sets=SETS.map(function(s){
+    var list=QS.filter(function(q){return q.set===s}),st=stat(list);
+    var dots=list.map(function(q,k){
+      var r=store.q[q.id];
+      var c=!r?"":(r.l===1?"ok":"bad");
+      var t=!r?"not answered yet":(r.l===1?"last answer correct":"last answer wrong");
+      return '<button class="dot '+c+'" data-act="dot" data-set="'+s+'" data-k="'+k+'" aria-label="Quiz '+s+', question '+q.no+', '+t+'" title="Question '+q.no+'"><i></i></button>';
+    }).join("");
+    var meta=st.seen?(st.seen+" seen · "+pct(st.ok,st.seen)+"% right last time"):"not started";
+    return '<section class="set" aria-labelledby="h'+s+'"><div class="sethead"><h2 id="h'+s+'">Quiz '+s+'</h2><p class="meta">'+list.length+' questions · '+meta+'</p></div>'+
+      '<div class="map" role="group" aria-label="Quiz '+s+' answer sheet">'+dots+'</div>'+
+      '<div><button class="btn" data-act="set" data-set="'+s+'">'+(st.seen?"Practice again":"Start")+' Quiz '+s+'</button></div></section>';
+  }).join("");
+  var doms=[1,2,3,4,5].map(function(d){
+    var list=QS.filter(function(q){return q.dom===d}),st=stat(list);
+    var right=st.seen?(pct(st.ok,st.seen)+"% · "+st.seen+"/"+list.length):(list.length+" questions");
+    return '<button class="dom" data-act="dom" data-dom="'+d+'"><span class="r"><span class="nm">'+DOMS[d]+'</span><span class="st">'+right+'</span></span><span class="barline" aria-hidden="true"><i style="width:'+(st.seen?pct(st.ok,st.seen):0)+'%"></i></span></button>';
+  }).join("");
+  $app.innerHTML=
+    '<header class="top"><h1><mark class="sw">Security+</mark> Practice</h1><p>SY0-701 · '+QS.length+' questions from your Notion page</p></header>'+
+    '<div class="home"><div>'+
+      '<div class="legend"><span><i></i>not answered</span><span><i class="ok"></i>last answer right</span><span><i class="bad"></i>last answer wrong</span></div>'+
+      sets+
+    '</div>'+
+    '<aside class="focus" aria-label="Focused practice">'+
+      '<h2>Focus</h2>'+
+      '<button class="btn ghost wide" data-act="missed"'+(missed.length?"":" disabled")+'><span>Missed questions</span><span class="n">'+missed.length+'</span></button>'+
+      '<button class="btn ghost wide" data-act="random"><span>Random 20</span><span class="n">mixed</span></button>'+
+      '<h3>By domain</h3><div class="doms">'+doms+'</div>'+
+      '<h3>Settings</h3><div class="prefs">'+
+        '<label><input type="checkbox" id="pref-sa" data-pref="sa"'+(store.prefs.sa?" checked":"")+'> Shuffle answer order</label>'+
+        '<label><input type="checkbox" id="pref-sq" data-pref="sq"'+(store.prefs.sq?" checked":"")+'> Shuffle question order in quizzes</label>'+
+      '</div>'+
+    '</aside></div>'+
+    '<div class="note">'+
+      '<p>Quiz 1 (performance-based) is not here. Your Notion page has no answer key for it and it depends on screenshots.</p>'+
+      '<p>Four questions refer to a log screenshot (Quiz 3 Q19, Quiz 4 Q1, Q20, Q27). They are marked, and the image is on your Notion page.</p>'+
+      '<p>The five domain groups are my own sorting of your questions into the SY0-701 exam domains. Progress is saved in this browser only.</p>'+
+    '</div>';
+  window.scrollTo(0,0);
+}
+
+/* ---------- sessions ---------- */
+function prep(q){
+  var opts=q.opts.map(function(t,k){return {t:t,ok:q.ans.indexOf(k)>-1}});
+  if(store.prefs.sa)shuffle(opts);
+  return {q:q,id:q.id,dom:q.dom,text:q.text,n:q.n,img:q.img,opts:opts};
+}
+function begin(title,list,o){
+  o=o||{};
+  var l=list.slice();
+  if(o.shuffleQ)shuffle(l);
+  if(!l.length)return;
+  sess={title:title,items:l.map(prep),i:o.from||0,res:l.map(function(){return null})};
+  renderQ();
+}
+
+function optHtml(it,o,k,r){
+  var done=!!(r&&!r.skip),picked=done&&r.picked.indexOf(k)>-1;
+  var cls="opt",tag="",mark=L[k];
+  if(done){
+    cls+=" done";
+    if(o.ok&&picked){cls+=" ok";tag="Correct";mark="✓"}
+    else if(o.ok){cls+=" miss";tag="Missed"}
+    else if(picked){cls+=" bad";tag="Your pick";mark="✕"}
+  }
+  var type=it.n>1?"checkbox":"radio";
+  return '<label class="'+cls+'"><input type="'+type+'" name="o" value="'+k+'"'+(done?" disabled":"")+(picked?" checked":"")+'><span class="bub" aria-hidden="true">'+mark+'</span><span class="otxt">'+esc(o.t)+'</span><span class="otag">'+tag+'</span></label>';
+}
+function feedbackHtml(it,r){
+  if(r.ok)return '<p class="verdict good">Correct</p>';
+  var correct=it.opts.filter(function(o){return o.ok}).map(function(o){return o.t.replace(/\n/g," ")}).join("\n");
+  var hits=r.picked.filter(function(k){return it.opts[k].ok}).length;
+  var head=(it.n>1&&hits)?("Partly right: "+hits+" of "+it.n):"Not quite";
+  return '<p class="verdict bad">'+head+'</p><p class="ans"><b>Correct answer'+(it.n>1?"s":"")+':</b>\n'+esc(correct)+'</p>';
+}
+
+function renderQ(){
+  view="q";
+  var it=sess.items[sess.i],r=sess.res[sess.i],done=!!(r&&!r.skip),n=sess.items.length,last=sess.i===n-1;
+  var prog=Math.round(100*(sess.i+(done?1:0))/n);
+  var tags='<span class="tag">'+esc(DOMS[it.dom])+'</span>'+(it.n>1?'<span class="tag hl">Select '+it.n+'</span>':'')+(it.img?'<span class="tag">Log screenshot is on your Notion page</span>':'');
+  var actions=done
+    ? '<button class="btn" data-act="next" id="btn-next">'+(last?"See results":"Next question")+'</button><button class="btn ghost" data-act="explain" id="btn-explain" hidden>Explain this</button>'
+    : '<button class="btn" data-act="check" id="btn-check" disabled>Check answer</button><button class="link" data-act="skip">Skip</button>'+(it.n>1?'<span class="meta" id="hint" aria-live="polite">0 of '+it.n+' selected</span>':'');
+  $app.innerHTML=
+    '<div class="qwrap">'+
+      '<div class="bar"><button class="link" data-act="exit">Exit</button><span class="settitle">'+esc(sess.title)+'</span><span class="count">'+(sess.i+1)+' / '+n+'</span></div>'+
+      '<div class="prog" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+prog+'"><i style="width:'+prog+'%"></i></div>'+
+      '<article>'+
+        '<div class="tags">'+tags+'</div>'+
+        '<h1 class="qtext" id="qt" tabindex="-1">'+esc(it.text)+'</h1>'+
+        '<div class="opts'+(it.n>1?" multi":"")+'" role="'+(it.n>1?"group":"radiogroup")+'" aria-labelledby="qt">'+it.opts.map(function(o,k){return optHtml(it,o,k,r)}).join("")+'</div>'+
+        '<div class="feedback" aria-live="polite">'+(done?feedbackHtml(it,r):"")+'</div>'+
+        '<div class="actions">'+actions+'</div>'+
+        '<div class="explain" id="explain" hidden></div>'+
+      '</article>'+
+    '</div>';
+  syncSel();syncExplain();
+}
+
+function syncSel(){
+  if(view!=="q"||!sess)return;
+  var it=sess.items[sess.i];
+  var ins=Array.prototype.slice.call($app.querySelectorAll("input[name=o]"));
+  var c=0;
+  ins.forEach(function(i){
+    var on=i.checked&&!i.disabled;
+    if(on)c++;
+    i.closest(".opt").classList.toggle("sel",on);
+  });
+  var b=$app.querySelector('[data-act="check"]');
+  if(b)b.disabled=c!==it.n;
+  var h=document.getElementById("hint");
+  if(h)h.textContent=c+" of "+it.n+" selected";
+}
+
+function check(){
+  if(view!=="q")return;
+  var it=sess.items[sess.i];
+  if(sess.res[sess.i]&&!sess.res[sess.i].skip)return;
+  var picked=Array.prototype.slice.call($app.querySelectorAll("input[name=o]:checked")).map(function(i){return +i.value});
+  if(picked.length!==it.n)return;
+  var ok=picked.every(function(k){return it.opts[k].ok});
+  sess.res[sess.i]={picked:picked,ok:ok};
+  record(it.id,ok);
+  renderQ();
+  var nb=document.getElementById("btn-next");if(nb)nb.focus();
+}
+function advance(){
+  if(sess.i+1<sess.items.length){
+    sess.i++;renderQ();window.scrollTo(0,0);
+    var qt=document.getElementById("qt");if(qt)qt.focus({preventScroll:true});
+  }else renderResults();
+}
+function skip(){
+  if(!sess.res[sess.i])sess.res[sess.i]={skip:true};
+  advance();
+}
+
+/* ---------- explain with Claude ---------- */
+function explain(btn){
+  var it=sess.items[sess.i],r=sess.res[sess.i];
+  var box=document.getElementById("explain");
+  if(!box||!r||r.skip)return;
+  box.hidden=false;
+  if(cache[it.id]){box.textContent=cache[it.id];return}
+  if(!sampleFn){box.textContent="Explanations are not available in this view.";return}
+  box.textContent="Thinking...";
+  btn.disabled=true;
+  var options=it.opts.map(function(o,k){return L[k]+". "+o.t.replace(/\n/g," ")}).join("\n");
+  var correct=it.opts.map(function(o,k){return o.ok?L[k]:""}).join("");
+  var chose=r.picked.map(function(k){return L[k]}).sort().join("");
+  var prompt="You are tutoring a student preparing for the CompTIA Security+ SY0-701 exam. Explain this practice question.\n\nQuestion: "+it.text+"\n\nOptions:\n"+options+"\n\nCorrect answer: "+correct+"\nStudent chose: "+chose+"\n\nIn at most 120 words of plain text with no markdown and in English: say why the correct answer fits, then give one short line for each wrong option the student should rule out. If the question depends on a control category (technical, managerial, operational, physical) or a control type (preventive, detective, corrective, deterrent, compensating, directive), name both and say which one the question is asking about.";
+  Promise.resolve(sampleFn(prompt,{modelTier:"quick",onText:function(t){box.textContent=t.text}})).then(function(out){
+    var t=(out&&out.text)||box.textContent;
+    cache[it.id]=t;box.textContent=t;btn.disabled=false;
+  },function(e){
+    var c=e&&e.code;
+    box.textContent=c==="not_granted"?"Explanations from Claude are turned off for this page. You can still ask in the chat.":(c==="rate_limited"?"Too many requests. Wait a minute and try again.":"The explanation did not load. Try again.");
+    btn.disabled=false;
+  });
+}
+
+/* ---------- results ---------- */
+function renderResults(){
+  view="res";
+  var rows=sess.items.map(function(it,i){return {it:it,r:sess.res[i]}}).filter(function(x){return x.r&&!x.r.skip});
+  var total=rows.length,ok=rows.filter(function(x){return x.r.ok}).length;
+  var skipped=sess.items.length-total;
+  var missed=rows.filter(function(x){return !x.r.ok});
+  var doms=[1,2,3,4,5].map(function(d){
+    var xs=rows.filter(function(x){return x.it.dom===d});
+    return {d:d,t:xs.length,ok:xs.filter(function(x){return x.r.ok}).length};
+  }).filter(function(x){return x.t>0});
+  var weakest=null;
+  doms.forEach(function(x){if(x.t>=3&&x.ok<x.t&&(!weakest||pct(x.ok,x.t)<pct(weakest.ok,weakest.t)))weakest=x});
+  var domHtml=doms.map(function(x){
+    return '<div class="drow"><span class="nm">'+DOMS[x.d]+(weakest&&weakest.d===x.d?'<span class="next">Study next</span>':'')+'</span><span class="mono">'+x.ok+'/'+x.t+'</span><div class="barline" aria-hidden="true"><i style="width:'+pct(x.ok,x.t)+'%"></i></div></div>';
+  }).join("");
+  var missHtml=missed.map(function(x){
+    var you=x.r.picked.map(function(k){return x.it.opts[k].t.replace(/\n/g," ")}).join("\n");
+    var right=x.it.opts.filter(function(o){return o.ok}).map(function(o){return o.t.replace(/\n/g," ")}).join("\n");
+    var q=x.it.text.replace(/\n/g," ");
+    return '<details class="miss-i"><summary>'+esc(q.length>130?q.slice(0,127)+"...":q)+'</summary><div class="body"><div><span class="h3">You picked</span>\n'+esc(you)+'</div><div><span class="h3">Correct</span>\n'+esc(right)+'</div></div></details>';
+  }).join("");
+  $app.innerHTML=
+    '<div class="res">'+
+      '<div><p class="h3">'+esc(sess.title)+'</p>'+
+      (total?'<p class="score">'+ok+'<small>/ '+total+' · '+pct(ok,total)+'%</small></p>':'<p class="score">0<small>answered</small></p>')+
+      (skipped?'<p class="meta">'+skipped+' skipped, not counted</p>':'')+'</div>'+
+      (domHtml?'<div><p class="h3">By domain</p>'+domHtml+'</div>':'')+
+      '<div class="actions" style="margin-top:0">'+
+        (missed.length?'<button class="btn" data-act="retry">Retry the '+missed.length+' you missed</button>':'')+
+        '<button class="btn ghost" data-act="home">Back to sets</button>'+
+      '</div>'+
+      (missed.length?'<div><p class="h3">Missed ('+missed.length+')</p>'+missHtml+'</div>':'')+
+    '</div>';
+  window.scrollTo(0,0);
+}
+
+/* ---------- events ---------- */
+$app.addEventListener("click",function(e){
+  var b=e.target.closest("[data-act]");
+  if(!b||b.disabled)return;
+  var a=b.dataset.act;
+  if(a==="set")begin("Quiz "+b.dataset.set,QS.filter(function(q){return q.set===+b.dataset.set}),{shuffleQ:store.prefs.sq});
+  else if(a==="dot")begin("Quiz "+b.dataset.set,QS.filter(function(q){return q.set===+b.dataset.set}),{from:+b.dataset.k});
+  else if(a==="missed")begin("Missed questions",QS.filter(function(q){return store.q[q.id]&&store.q[q.id].l===0}),{shuffleQ:true});
+  else if(a==="random")begin("Random 20",shuffle(QS.slice()).slice(0,20));
+  else if(a==="dom")begin(DOMS[+b.dataset.dom],QS.filter(function(q){return q.dom===+b.dataset.dom}),{shuffleQ:true});
+  else if(a==="check")check();
+  else if(a==="next")advance();
+  else if(a==="skip")skip();
+  else if(a==="explain")explain(b);
+  else if(a==="exit"||a==="home")renderHome();
+  else if(a==="retry")begin("Missed from "+sess.title,sess.items.filter(function(it,i){var r=sess.res[i];return r&&!r.skip&&!r.ok}).map(function(it){return it.q}),{shuffleQ:true});
+});
+$app.addEventListener("change",function(e){
+  var t=e.target;
+  if(t.name==="o")syncSel();
+  else if(t.dataset&&t.dataset.pref){store.prefs[t.dataset.pref]=t.checked;save()}
+});
+document.addEventListener("keydown",function(e){
+  if(view!=="q"||!sess||e.ctrlKey||e.metaKey||e.altKey)return;
+  var r=sess.res[sess.i],done=!!(r&&!r.skip);
+  if(e.key==="Enter"){
+    if(e.target.closest&&e.target.closest("button,summary,a"))return;
+    e.preventDefault();
+    if(done)advance();else check();
+    return;
+  }
+  if(!done&&e.key.length===1){
+    var k=L.indexOf(e.key.toUpperCase());
+    var ins=$app.querySelectorAll("input[name=o]");
+    if(k>-1&&k<ins.length&&!ins[k].disabled){ins[k].click()}
+  }
+});
+
+renderHome();
+})();
+</script>
+
+</body></html>
